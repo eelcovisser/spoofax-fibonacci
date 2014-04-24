@@ -1,0 +1,9 @@
+module example0
+
+int fib(int n) { 
+	
+	
+  return true;
+}
+
+ 

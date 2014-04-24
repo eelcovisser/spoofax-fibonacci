@@ -1,0 +1,50 @@
+module names
+
+imports include/fibo
+
+namespaces Module Function Variable  
+	
+binding rules
+
+  Module(name, def*) :
+    defines Module name
+    scopes Function   
+    
+  Import(name) :
+    refers to Module name
+    imports Function from Module name
+
+  Param(t, name) : 
+    defines Variable name of type t
+      
+  Var(name): 
+    refers to Variable name
+
+  Function(t, name, param*, stat*) :
+    defines Function name of type (t*, t)
+      where param* has type t*
+    scopes Variable, Function
+   
+  Call(name, e*) :
+    refers to Function name
+    
+  QCall(mod, name, e*) :
+    refers to Function name in Module mod
+    refers to Module mod
+    
+  VarDecl(t, name) :
+    defines Variable name of type t in subsequent scope
+    
+  VarDeclInit(t, name, e) :
+    defines Variable name of type t in subsequent scope
+    
+  For(name, e1, e2, s) :
+    defines Variable name of type t in s
+      where e1 has type t
+      
+  ForIn(name, e, s) :
+    defines Variable name of type t in s
+      where e has type ListType(t)
+    
+  Block(s) :
+    scopes Variable

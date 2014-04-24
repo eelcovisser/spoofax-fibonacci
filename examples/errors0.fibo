@@ -1,0 +1,27 @@
+module example0
+
+int fib(int n) {
+  
+  return true;
+  
+  return fib(n);
+  
+  return fib(true);
+  
+  return false 
+       + '3';
+  
+  return n 
+       + true;
+       
+
+  
+  if(n <= 1)   
+    return 1;
+  else 
+    return fib(true) + fib(n - 1);
+}
+
+int even(int n) {
+  return n % 2 == 0;
+}

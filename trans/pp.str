@@ -1,0 +1,29 @@
+module pp
+
+imports
+
+	libstratego-gpp
+	lib/runtime/tmpl/pp
+	Common.pp.generated
+	fibo.pp.generated
+	syntax.pp.generated
+
+rules
+	
+  pp-fibo-string =
+    prettyprint-Start
+    ; !V([], <id>)
+    ; box2text-string(|120)
+      
+  pp-partial-fibo-string =
+    prettyprint-example
+    ; !V([], <id>)
+    ; box2text-string(|120)
+      
+  pp-debug :
+    ast -> result
+    with
+       result := <pp-fibo-string> ast
+    <+ <bottomup(try(not(is-string); not(is-list); not(pp-fibo-string); debug(!"cannot pp ")))> ast
+    ;  result := ""
+

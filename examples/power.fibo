@@ -1,0 +1,17 @@
+module power
+
+import fib
+
+int power(int x, int n) {
+  int power(int n) {
+    if(n <= 0) 
+      return 1; 
+    else 
+      return x * power(n - 1);
+  }
+  return power(n);
+}
+
+int main() {
+  return power(3, 4) + fib(3);
+}

@@ -1,0 +1,101 @@
+module Syntax
+
+imports Common
+  
+templates  
+
+  Start.Module = <
+    module <ID>
+    
+    <Definition*; separator="\n\n">
+  >
+  
+  Definition.Import = <import <ID>>  
+  
+ 
+templates // functions
+
+  Definition.Function = <
+    <Type> <ID>(<Param*; separator=", ">) {
+      <Statement*; separator="\n">
+    }
+  >  
+  
+  Param.Param = <<Type> <ID>>
+
+templates // types
+  
+  Type.IntType  = <int>
+  Type.CharType = <char>
+  Type.BoolType = <bool>
+  Type.ListType = <list(<Type>)>
+  
+templates // statements
+
+  Statement.Return = <return <Exp>;>
+ 
+  Statement.If = <
+    if(<Exp>) 
+      <Statement>
+    else
+      <Statement>
+  >
+  
+  Statement.While = <
+    while(<Exp>)
+      <Statement>
+  >
+  
+  Statement.For = <
+    for(<ID> = <Exp> to <Exp>) 
+      <Statement>  
+  >
+
+  Statement.ForIn = <
+    for(<ID> in <Exp>) 
+      <Statement>
+  >
+  
+  Statement.Assign = <<Exp> = <Exp>;>
+    
+  //Statement.Assign = <<Exp*; separator=", "> = <Exp*; separator=", ">;>
+  
+  Statement.VarDecl = <<Type> <ID>;>
+  
+  Statement.VarDeclInit = <<Type> <ID> = <Exp>;>
+
+  Statement.Block = <
+    {
+      <Statement*; separator="\n">
+    }
+  >
+    
+  Statement = <<Definition>>
+  
+templates // expressions
+
+  Exp.Var   = <<ID>> 
+  Exp.Int   = <<INT>>
+  Exp.Char  = <<CHAR>>
+  Exp.True  = <true>
+  Exp.False = <false>
+   
+  Exp       = <(<Exp>)> {bracket}
+  
+  Exp.Call  = <<ID>(<Exp*; separator=", ">)>
+  
+  Exp.QCall = <<ID>:<ID>(<Exp*; separator=", ">)>
+  
+  Exp.Add   = <<Exp> + <Exp>> {assoc}
+  Exp.Sub   = <<Exp> - <Exp>> {left}
+  Exp.Mod   = <<Exp> % <Exp>> {non-assoc}
+  Exp.Mul   = <<Exp> * <Exp>> {assoc}
+  
+  Exp.Eq    = [[Exp] == [Exp]] {non-assoc}
+  Exp.Leq   = [[Exp] <= [Exp]] {non-assoc}
+  Exp.Leq   = [[Exp] > [Exp]] {non-assoc}
+       
+context-free priorities
+
+  {left: Exp.Mul} > {left: Exp.Add Exp.Sub } > Exp.Mod > {non-assoc: Exp.Leq Exp.Eq}
+  

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.imp.runtime.languageDescription">
+      <language
+            extensions="fibo"
+            description="fibo"
+            language="fibo"
+            derivedFrom="DynamicRoot"
+            validator="spoofax.fibonacci.FiboValidator"
+            validatorClass="spoofax.fibonacci.FiboValidator"
+      ></language>
+   </extension>
+   <extension
+         id="spoofax.fibonacci.parser"
+         name="fibo Parser"
+         point="org.eclipse.imp.runtime.parser">
+      <parser
+            class="spoofax.fibonacci.FiboParseController"
+            language="fibo">
+      </parser>
+   </extension>    
+</plugin>

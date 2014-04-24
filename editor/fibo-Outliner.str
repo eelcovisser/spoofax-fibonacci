@@ -1,0 +1,10 @@
+module editor/fibo-Outliner
+
+imports
+  include/fibo
+  lib/runtime/editor/outline-library
+  lib/runtime/editor/origins
+  editor/fibo-Outliner.generated
+
+rules
+  

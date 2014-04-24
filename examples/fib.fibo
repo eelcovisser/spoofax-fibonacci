@@ -1,0 +1,39 @@
+module fib
+
+int fib(int n) {
+  if(n <= 1) 
+    return 1;
+  else
+    return fib(n - 2) + fib(n - 1); 
+}
+
+int power(int x, int n) {
+  if(x <= 0)
+    return 1;
+  else
+    return x * power(x, n - 1);
+}
+
+
+int fibE(int n) {
+  int fib(int n, int f1, int f2) {
+    if(n <= 1)
+      return f1;
+    else
+      return fib(n - 1, f1 + f2, f1);
+  }
+  return fib(n, 1, 1);
+}
+
+int fibI(int n) { 
+  int f = 1;
+  int g = 1;
+  while(n > 2) { 
+    int t = f; 
+    f = f + g; 
+    g = t;
+    n = n - 1;
+  }
+  return f;
+}
+

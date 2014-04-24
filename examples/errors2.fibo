@@ -1,0 +1,30 @@
+module example2
+
+int fib(int n, int m) {
+  if(n <= 1) 
+    return 1;
+  else 
+    return fib(n - 2) + fib(n - 1);
+}
+  
+int main() { 
+  int fib = fib(33);
+  int y = fib(4);
+  
+  int z = fib;
+}
+
+int fibfast(int n) {
+  int tst = tst;  
+  int m = 0;
+  {int q; q = q + p; }
+  int p = 1;
+  for(i = 1 to i) { 
+    int q;
+    m, p = p, m + p;
+    m = q;
+  }
+  int z;
+  return q;
+  return m;
+}

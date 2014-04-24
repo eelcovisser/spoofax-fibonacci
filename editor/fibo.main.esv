@@ -1,0 +1,31 @@
+module fibo.main
+
+imports
+  fibo-Colorer
+  fibo-Completions
+  fibo-Folding
+  fibo-Menus
+  fibo-Refactorings
+  fibo-References
+  fibo-Syntax
+  fibo-Views
+
+language General properties
+  
+  name:          fibo
+  id:            spoofax.fibonacci
+  extends:       Root
+  
+  description:   "Spoofax-generated editor for the fibo language"
+  url:           http://strategoxt.org
+  
+  extensions:    fibo
+  table:         include/fibo.tbl
+  start symbols: Start
+  
+  provider:      include/fibo.ctree
+  //provider:      include/fibo-java.jar 
+  
+  observer:      editor-analyze (multifile)
+  
+  on save:       editor-save
